@@ -1,6 +1,7 @@
+/*
 MIT License
 
-Copyright (c) 2015-2019 Jayakumar Sengottuvel
+Copyright (c) [2019] [Jayakumar Sengottuvel] [www.jayakumar.de]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +20,32 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+*/
+
+/** @file configstore_example.c
+ *  @brief configstore example
+ *
+ *  An Example to demonstrate the useage of configstore
+ *
+ *  @author Jayakumar Sengottuvel (JSengottuvel)
+ *  @bug No know bugs.
+ */
+
+#include <stdio.h>
+#include "configstore.h"
+
+ConfigStore_KeyPairType ConfigItems[5] = {
+    {"Name",""},
+    {"Email",""},
+    {"Website",""},
+    {"Linked In",""},
+    {"GitHub",""},
+};
+
+const int numConfigs = sizeof(ConfigItems)/sizeof(ConfigStore_KeyPairType);
+
+int main() {
+    ConfigStore_LoadFromFile("userconfig.txt", ConfigItems, numConfigs);
+    ConfigStore_Display(ConfigItems, numConfigs);
+    return 0;
+}

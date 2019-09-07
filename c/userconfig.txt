@@ -1,0 +1,6 @@
+Example configuration file.
+Name : Jayakumar Sengottuvel
+Email: info@jayakumar.de
+Website  : www.jayakumar.de
+Linked In : https://www.linkedin.com/in/jsengottuvel/
+GitHub    : https://github.com/JSengottuvel
