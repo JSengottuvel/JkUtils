@@ -1,2 +1,2 @@
-# configstore
-Simple configuration storage access library
+# JkUtils
+A collection of programming utility function implementation by Jayakumar Sengottuvel.
