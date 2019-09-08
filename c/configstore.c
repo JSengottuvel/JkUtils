@@ -35,34 +35,7 @@ SOFTWARE.
 #include <string.h>
 #include <ctype.h>
 #include "configstore.h"
-
-char* ConfigStore_TrimText(char* text)
-{
-    char* pstart = text;
-    char* pend   = text;
-    if(text == NULL)
-    {
-        return NULL;
-    }
-    //Removes the leading spaces
-    while (isspace(*pstart))
-    {
-        pstart++;
-    }
-    //Find the end of string
-    while (*pend)
-    {
-        pend++;
-    }
-    pend--;  //move back one char. (point to last valid character)
-    while (isspace(*pend))
-    {
-        pend--;
-    }
-    *pend++;     //Move forward one char.
-    *pend= '\0'; //Write string termination
-    return pstart; //return the result
-}
+#include "jkcstring.h"
 
 int ConfigStore_ParseKeyPair(char *lineText, char** p2pKey, char **p2pValue)
 {
@@ -76,12 +49,12 @@ int ConfigStore_ParseKeyPair(char *lineText, char** p2pKey, char **p2pValue)
         return 1; //Error
     }
     pkey = strtok(lineText, delimKey);
-    pkey = ConfigStore_TrimText(pkey);
+    pkey = JkCString_Trim(pkey);
     *p2pKey = pkey;
     if(pkey != NULL)
     {
         pvalue = strtok(NULL, delimValue);
-        pvalue = ConfigStore_TrimText(pvalue);
+        pvalue = JkCString_Trim(pvalue);
         *p2pValue = pvalue;
         if(pvalue != NULL)
         {

@@ -22,10 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/** @file configstore.h
- *  @brief A file based config storage
+/** @file jkcstring.h
+ *  @brief C string helper
  *
- *  A helper for file based key pair configuration
+ *  A helper for string operation
  *
  *  @author Jayakumar Sengottuvel (JSengottuvel)
  *  @bug No know bugs.
@@ -33,20 +33,11 @@ SOFTWARE.
 
 #include <stdio.h>
 
-#define CONFIGSTORE_LINE_MAXCHAR  (1000u)
-#define CONFIGSTORE_KEY_MAXCHAR   (200u)
-#define CONFIGSTORE_VALUE_MAXCHAR (200u)
+extern char* JkCString_Trim(char* text);
 
-typedef struct ConfigStore_KeyPairType {
-    char const key[CONFIGSTORE_KEY_MAXCHAR];
-    char value[CONFIGSTORE_VALUE_MAXCHAR];
-}ConfigStore_KeyPairType;
+extern void  JkCString_PadLeft(char* input, char* output, char padChar, int padLength);
 
-/*Public functions*/
-extern void ConfigStore_LoadFromFile(char* filename, ConfigStore_KeyPairType* list, int numItems);
+extern void JkCString_CopyFromRight(char* input, int copylength, char* output);
 
-extern void ConfigStore_Display(ConfigStore_KeyPairType* list, int numItems);
-
-extern int ConfigStore_GetValue(char* filename, char const * key, char*value, int valueLength);
-
-extern int ConfigStore_ParseKeyPair(char *lineText, char** p2pKey, char **p2pValue);
+extern void  JkCString_CopyFromRightAndPadLeft(char* input, int copylength,
+        char* output, char padChar, int padLength);

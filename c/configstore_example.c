@@ -33,6 +33,7 @@ SOFTWARE.
 
 #include <stdio.h>
 #include "configstore.h"
+#include "jkcstring.h"
 
 ConfigStore_KeyPairType ConfigItems[5] = {
     {"Name",""},
@@ -45,7 +46,25 @@ ConfigStore_KeyPairType ConfigItems[5] = {
 const int numConfigs = sizeof(ConfigItems)/sizeof(ConfigStore_KeyPairType);
 
 int main() {
+
+    /* Example for ConfigStore helpers */
     ConfigStore_LoadFromFile("userconfig.txt", ConfigItems, numConfigs);
     ConfigStore_Display(ConfigItems, numConfigs);
+
+    /* Example usage of JkCString helpers */
+    char inText[] ="Software Engineers Are Great!";
+    char outText[100];
+    int length =6;
+
+    JkCString_CopyFromRight(inText, length, outText);
+    printf("\nInputText: %s", inText);
+    printf("\n%d letters from Right:%s", length, outText);
+
+    JkCString_CopyFromRightAndPadLeft(inText, length, outText, '#', 20);
+    printf("\npadded string:%s", outText);
+
+    JkCString_PadLeft(inText, outText, '-', 40);
+    printf("\nPadLeft string:%s", outText);
+
     return 0;
 }
