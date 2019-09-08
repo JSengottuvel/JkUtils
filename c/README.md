@@ -5,7 +5,7 @@ from filestore.
 
 # How to compile on GCC?
 
-gcc configstore.c configstore_example.c -o configstore.exe
+gcc configstore.c configstore_example.c jkcstring.c -o configstore.exe
 
 # How to execute the program?
 
