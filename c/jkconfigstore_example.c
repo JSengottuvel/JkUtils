@@ -68,9 +68,18 @@ int main() {
     printf("\nPadLeft string:%s", outText);
 
     /*Example usage of JkCHex helpers */
-    char outAscii[200];
-    JkCHex_Str2Ascii(inText, outAscii, sizeof(outAscii), " ");
+    char outAscii[300];
+    JkCHex_Str2Format(inText, outAscii, sizeof(outAscii), "%c ");
+    printf("\nAscii letters: %s", outAscii);
+
+    JkCHex_Str2Ascii(inText, outAscii, sizeof(outAscii));
     printf("\nAscii string: %s", outAscii);
+
+    JkCHex_Str2AsciiHex1(inText, outAscii, sizeof(outAscii));
+    printf("\nAscii Hex1 string: %s", outAscii);
+
+    JkCHex_Str2AsciiHex2(inText, outAscii, sizeof(outAscii));
+    printf("\nAscii Hex2 string: %s", outAscii);
 
     return 0;
 }

@@ -33,4 +33,10 @@ SOFTWARE.
 
 #include <stdio.h>
 
-extern int JkCHex_Str2Ascii(char* input, char* output, int outbufferlength, char* delimter);
+extern int JkCHex_Str2Format(char* input, char* output, int outbufferlength, char* formatString);
+
+extern int JkCHex_Str2Ascii(char* input, char* output, int outbufferlength);
+
+extern int JkCHex_Str2AsciiHex1(char* input, char* output, int outbufferlength);
+
+extern int JkCHex_Str2AsciiHex2(char* input, char* output, int outbufferlength);
