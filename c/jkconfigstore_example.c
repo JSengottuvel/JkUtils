@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/** @file configstore_example.c
+/** @file jkconfigstore_example.c
  *  @brief configstore example
  *
  *  An Example to demonstrate the useage of configstore
@@ -32,11 +32,11 @@ SOFTWARE.
  */
 
 #include <stdio.h>
-#include "configstore.h"
+#include "jkconfigstore.h"
 #include "jkcstring.h"
 #include "jkchex.h"
 
-ConfigStore_KeyPairType ConfigItems[5] = {
+JkConfigStore_KeyPairType ConfigItems[5] = {
     {"Name",""},
     {"Email",""},
     {"Website",""},
@@ -44,13 +44,13 @@ ConfigStore_KeyPairType ConfigItems[5] = {
     {"GitHub",""},
 };
 
-const int numConfigs = sizeof(ConfigItems)/sizeof(ConfigStore_KeyPairType);
+const int numConfigs = sizeof(ConfigItems)/sizeof(JkConfigStore_KeyPairType);
 
 int main() {
 
     /* Example usage of ConfigStore helpers */
-    ConfigStore_LoadFromFile("userconfig.txt", ConfigItems, numConfigs);
-    ConfigStore_Display(ConfigItems, numConfigs);
+    JkConfigStore_LoadFromFile("userconfig.txt", ConfigItems, numConfigs);
+    JkConfigStore_Display(ConfigItems, numConfigs);
 
     /* Example usage of JkCString helpers */
     char inText[] ="Software Engineers Are Great!";

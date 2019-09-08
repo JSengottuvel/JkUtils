@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/** @file configstore.h
+/** @file jkconfigstore.h
  *  @brief A file based config storage
  *
  *  A helper for file based key pair configuration
@@ -33,20 +33,20 @@ SOFTWARE.
 
 #include <stdio.h>
 
-#define CONFIGSTORE_LINE_MAXCHAR  (1000u)
-#define CONFIGSTORE_KEY_MAXCHAR   (200u)
-#define CONFIGSTORE_VALUE_MAXCHAR (200u)
+#define JKCONFIGSTORE_LINE_MAXCHAR  (1000u)
+#define JKCONFIGSTORE_KEY_MAXCHAR   (200u)
+#define JKCONFIGSTORE_VALUE_MAXCHAR (200u)
 
-typedef struct ConfigStore_KeyPairType {
-    char const key[CONFIGSTORE_KEY_MAXCHAR];
-    char value[CONFIGSTORE_VALUE_MAXCHAR];
-}ConfigStore_KeyPairType;
+typedef struct JkConfigStore_KeyPairType {
+    char const key[JKCONFIGSTORE_KEY_MAXCHAR];
+    char value[JKCONFIGSTORE_VALUE_MAXCHAR];
+}JkConfigStore_KeyPairType;
 
 /*Public functions*/
-extern void ConfigStore_LoadFromFile(char* filename, ConfigStore_KeyPairType* list, int numItems);
+extern void JkConfigStore_LoadFromFile(char* filename, JkConfigStore_KeyPairType* list, int numItems);
 
-extern void ConfigStore_Display(ConfigStore_KeyPairType* list, int numItems);
+extern void JkConfigStore_Display(JkConfigStore_KeyPairType* list, int numItems);
 
-extern int ConfigStore_GetValue(char* filename, char const * key, char*value, int valueLength);
+extern int JkConfigStore_GetValue(char* filename, char const * key, char*value, int valueLength);
 
-extern int ConfigStore_ParseKeyPair(char *lineText, char** p2pKey, char **p2pValue);
+extern int JkConfigStore_ParseKeyPair(char *lineText, char** p2pKey, char **p2pValue);

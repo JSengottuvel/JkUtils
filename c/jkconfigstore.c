@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/** @file configstore.c
+/** @file jkconfigstore.c
  *  @brief A file based config storage
  *
  *  A helper for file based key pair configuration
@@ -34,10 +34,10 @@ SOFTWARE.
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include "configstore.h"
+#include "jkconfigstore.h"
 #include "jkcstring.h"
 
-int ConfigStore_ParseKeyPair(char *lineText, char** p2pKey, char **p2pValue)
+int JkConfigStore_ParseKeyPair(char *lineText, char** p2pKey, char **p2pValue)
 {
     int retErrorCode = -1; //Error
     char delimKey[] = ":";
@@ -64,20 +64,20 @@ int ConfigStore_ParseKeyPair(char *lineText, char** p2pKey, char **p2pValue)
     return retErrorCode;
 }
 
-int ConfigStore_GetValue(char* filename, char const * key, char*value, int valueLength)
+int JkConfigStore_GetValue(char* filename, char const * key, char*value, int valueLength)
 {
     int retErrorCode = -1; //error
     FILE *fp;
-    char strLine[CONFIGSTORE_LINE_MAXCHAR];
+    char strLine[JKCONFIGSTORE_LINE_MAXCHAR];
     char* pkey;
     char* pvalue;
     fp = fopen(filename, "r");
     if (fp == NULL){
         return retErrorCode;
     }
-    while(fgets(strLine, CONFIGSTORE_LINE_MAXCHAR, fp) != NULL)
+    while(fgets(strLine, JKCONFIGSTORE_LINE_MAXCHAR, fp) != NULL)
     {
-        if(ConfigStore_ParseKeyPair(strLine, &pkey, &pvalue) == 0)
+        if(JkConfigStore_ParseKeyPair(strLine, &pkey, &pvalue) == 0)
         {
             if(strcmp(pkey, key) == 0)
             {
@@ -91,25 +91,25 @@ int ConfigStore_GetValue(char* filename, char const * key, char*value, int value
     return retErrorCode;
 }
 
-void ConfigStore_LoadFromFile(char* filename, ConfigStore_KeyPairType* list, int numItems)
+void JkConfigStore_LoadFromFile(char* filename, JkConfigStore_KeyPairType* list, int numItems)
 {
     int i;
     for(i = 0; i < numItems; i++)
     {
-        ConfigStore_KeyPairType* item= &list[i];
-        if(ConfigStore_GetValue(filename, item->key, item->value, sizeof(item->value))== 0)
+        JkConfigStore_KeyPairType* item= &list[i];
+        if(JkConfigStore_GetValue(filename, item->key, item->value, sizeof(item->value))== 0)
         {
             //success
         }
     }
 }
 
-void ConfigStore_Display(ConfigStore_KeyPairType* list, int numItems)
+void JkConfigStore_Display(JkConfigStore_KeyPairType* list, int numItems)
 {
     int i;
     for(i = 0; i < numItems; i++)
     {
-        ConfigStore_KeyPairType* item= &list[i];
+        JkConfigStore_KeyPairType* item= &list[i];
         printf("\n%-30s:%-20s", item->key, item->value);
     }
 }
