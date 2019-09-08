@@ -46,7 +46,7 @@ int ConfigStore_ParseKeyPair(char *lineText, char** p2pKey, char **p2pValue)
     char* pvalue;
     if(lineText == NULL)
     {
-        return 1; //Error
+        return retErrorCode;
     }
     pkey = strtok(lineText, delimKey);
     pkey = JkCString_Trim(pkey);
@@ -66,7 +66,7 @@ int ConfigStore_ParseKeyPair(char *lineText, char** p2pKey, char **p2pValue)
 
 int ConfigStore_GetValue(char* filename, char const * key, char*value, int valueLength)
 {
-    int retErrorCode = 1; //error
+    int retErrorCode = -1; //error
     FILE *fp;
     char strLine[CONFIGSTORE_LINE_MAXCHAR];
     char* pkey;

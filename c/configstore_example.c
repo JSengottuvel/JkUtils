@@ -34,6 +34,7 @@ SOFTWARE.
 #include <stdio.h>
 #include "configstore.h"
 #include "jkcstring.h"
+#include "jkchex.h"
 
 ConfigStore_KeyPairType ConfigItems[5] = {
     {"Name",""},
@@ -47,7 +48,7 @@ const int numConfigs = sizeof(ConfigItems)/sizeof(ConfigStore_KeyPairType);
 
 int main() {
 
-    /* Example for ConfigStore helpers */
+    /* Example usage of ConfigStore helpers */
     ConfigStore_LoadFromFile("userconfig.txt", ConfigItems, numConfigs);
     ConfigStore_Display(ConfigItems, numConfigs);
 
@@ -65,6 +66,11 @@ int main() {
 
     JkCString_PadLeft(inText, outText, '-', 40);
     printf("\nPadLeft string:%s", outText);
+
+    /*Example usage of JkCHex helpers */
+    char outAscii[200];
+    JkCHex_Str2Ascii(inText, outAscii, sizeof(outAscii), " ");
+    printf("\nAscii string: %s", outAscii);
 
     return 0;
 }
