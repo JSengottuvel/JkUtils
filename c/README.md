@@ -27,6 +27,6 @@ configstore.exe
 
 ## Typical result from program
 
-![alt text](https://github.com/JSengottuvel/JkUtils/blob/master/c/docs/images/result1.png "Sample result")
+![alt text](https://github.com/JSengottuvel/JkUtils/blob/master/c/docs/images/result1.PNG "Sample result")
 
 ---
