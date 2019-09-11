@@ -79,7 +79,11 @@ int main() {
     printf("\nAscii Hex1 string: %s", outAscii);
 
     JkCHex_Str2AsciiHex2(inText, outAscii, sizeof(outAscii));
-    printf("\nAscii Hex2 string: %s", outAscii);
+    printf("\nAscii Hex2 string:\n%s", outAscii);
+
+
+    JkCHex_Str2AsciiByteStream(inText, outAscii, sizeof(outAscii));
+    printf("\nAscii ByteStream:\n%s", outAscii);
 
     return 0;
 }
