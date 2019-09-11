@@ -85,5 +85,5 @@ int JkCHex_Str2AsciiHex2(char* input, char* output, int outbufferlength)
 
 int JkCHex_Str2AsciiByteStream(char* input, char* output, int outbufferlength)
 {
-	return JkCHex_Str2Format(input, output, outbufferlength, "%02X");
+    return JkCHex_Str2Format(input, output, outbufferlength, "%02X");
 }
