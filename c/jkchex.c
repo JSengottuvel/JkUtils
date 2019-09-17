@@ -39,8 +39,6 @@ SOFTWARE.
 int JkCHex_Str2Format(char* input, char* output, int outbufferlength, char* formatString)
 {
     int retErrorCode = 0;
-    //Check if output buffer size big enough to store the result.
-    int lenInput = strlen(input);
     int wIdx = 0;
     int result;
     char* pIn = input;

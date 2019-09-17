@@ -59,7 +59,7 @@ char* JkCString_Trim(char* text)
     {
         pend--;
     }
-    *pend++;     //Move forward one char.
+    pend++;     //Move forward one char.
     *pend= '\0'; //Write string termination
     text = pstart; //also return the results by argument
     return pstart; //return the result
