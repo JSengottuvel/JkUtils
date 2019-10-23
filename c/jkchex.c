@@ -85,3 +85,40 @@ int JkCHex_Str2AsciiByteStream(char* input, char* output, int outbufferlength)
 {
     return JkCHex_Str2Format(input, output, outbufferlength, "%02X");
 }
+
+int JkCHex_ByteArray2Format(unsigned char* inputBytes, int numBytes, char* output,
+        int outbufferlength, char* formatString)
+{
+    int retErrorCode = 0;
+    int wIdx = 0;
+    int result;
+    unsigned char* pIn = inputBytes;
+    char* pOut = output;
+    int i;
+    for(i = 0; i < numBytes; i++)
+    {
+        result = snprintf(pOut, (outbufferlength - wIdx), formatString, *pIn);
+        if(result < 0)
+        {
+            retErrorCode = -2;
+            break;
+        }
+        else
+        {
+            pIn++;
+            pOut += result;
+            wIdx += result;
+            if(wIdx >= outbufferlength)
+            {
+                retErrorCode = -3;
+                break;
+            }
+        }
+    };
+    return retErrorCode;
+}
+
+int JkCHex_ByteArray2AsciiByteStream(unsigned char* inputBytes, int numBytes, char* output, int outbufferlength)
+{
+    return JkCHex_ByteArray2Format(inputBytes, numBytes, output, outbufferlength, "%02X");
+}

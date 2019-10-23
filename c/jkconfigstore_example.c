@@ -85,5 +85,8 @@ int main() {
     JkCHex_Str2AsciiByteStream(inText, outAscii, sizeof(outAscii));
     printf("\nAscii ByteStream:\n%s", outAscii);
 
+    unsigned char inBytes[] = {0x21, 0x2D, 0x35, 0xff, 0x00, 0x77, 0x99};
+    JkCHex_ByteArray2AsciiByteStream(inBytes, sizeof(inBytes), outAscii, sizeof(outAscii));
+    printf("\nByteArray2AsciiByteStream:\n%s", outAscii);
     return 0;
 }

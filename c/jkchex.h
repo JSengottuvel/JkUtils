@@ -42,3 +42,9 @@ extern int JkCHex_Str2AsciiHex1(char* input, char* output, int outbufferlength);
 extern int JkCHex_Str2AsciiHex2(char* input, char* output, int outbufferlength);
 
 extern int JkCHex_Str2AsciiByteStream(char* input, char* output, int outbufferlength);
+
+extern int JkCHex_ByteArray2Format(unsigned char* inputBytes, int numBytes, char* output,
+                int outbufferlength, char* formatString);
+
+extern int JkCHex_ByteArray2AsciiByteStream(unsigned char* inputBytes, int numBytes,
+                char* output, int outbufferlength);
